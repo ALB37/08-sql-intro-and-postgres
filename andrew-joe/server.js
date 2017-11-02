@@ -43,10 +43,10 @@ app.get('/new', (request, response) => {
 });
 
 
-// REVIEW: Routes for making API calls to use CRUD Operations on our database
+// REVIEWED: Routes for making API calls to use CRUD Operations on our database
 app.get('/articles', (request, response) => {
-  // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
-  // PUT YOUR RESPONSE HERE
+  // COMMENTED: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
+  // This process is number 3 and 4 in the full-stack-diagram. Articles.js will use the fetchAll method to get some JSON from the /articles url in root and load all of the results by calling the loadAll. Then it will proceed to execute the callbacks that are passed in. This following line is telling the server to query from the DB everything from the articles table. This makes it available to the /articles url which then can be used by the fetchAll function to render it into the view. The part of CRUD being used is the Read.
   client.query('SELECT * FROM articles')
     .then(function(result) {
       response.send(result.rows);
@@ -57,8 +57,8 @@ app.get('/articles', (request, response) => {
 });
 
 app.post('/articles', (request, response) => {
-  // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
-  // PUT YOUR RESPONSE HERE
+  // COMMENTED: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
+  // This is 2 and 3 on the full-stack-diagram. The method from article.js being interacted with in this particular piece of code is insertRecord. The body that's referenced in the query method below refers to what the request fully contains, not to be confused with the body property of the object. The part of CRUD being enacted is the Create. 
   client.query(
     `INSERT INTO
     articles(title, author, "authorUrl", category, "publishedOn", body)
